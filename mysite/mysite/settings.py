@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Sitemap
+SITE_ID = 1
 
 # Application definition
 
@@ -37,7 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+
+    # my app
     'blog.apps.BlogConfig',
+
+    # third-party
     'taggit',
 ]
 
