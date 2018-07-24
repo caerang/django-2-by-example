@@ -33,6 +33,8 @@ SITE_ID = 1
 # Application definition
 
 INSTALLED_APPS = [
+    # Django looks for templates by order of app appearance in here
+    'account.apps.AccountConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -133,11 +135,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+LOGIN_REDIRECT_URL = 'dashboard'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
 
 # Sending email
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'op@h9works.com'
-EMAIL_HOST_PASSWORD = 'h9works.com'
+EMAIL_HOST_USER = 'xxxx'
+EMAIL_HOST_PASSWORD = 'xxxx'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
