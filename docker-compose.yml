@@ -3,13 +3,28 @@ version: '3.6'
 services:
   db:
     image: postgres:10.4
+    restart: always
+    volumes:
+      - type: volume
+        source: ./database
+        target: /var/lib/postgresql/data
+        volume:
+          nocopy: true
 
   web:
     build: .
     command: python3 manage.py runserver 0.0.0.0:8000
+    restart: always
     volumes:
+      # - type: volume
+      #   source: ./mysite
+      #   target: /app
       - ./mysite:/app
     ports:
       - "8000:8000"
     depends_on:
       - db
+
+volumes:
+  database:
+  # mysite:
