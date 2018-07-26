@@ -25,7 +25,7 @@ SECRET_KEY = '16lj_5%#*1bjoacwu!v^(4t(m%esovf1@htd0y*d0w6an=7n&2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*',]
+ALLOWED_HOSTS = ['*', ]
 
 # Sitemap
 SITE_ID = 1
@@ -134,6 +134,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# Media files
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
 # Sending email
