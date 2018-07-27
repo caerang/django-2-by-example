@@ -25,7 +25,7 @@ SECRET_KEY = '16lj_5%#*1bjoacwu!v^(4t(m%esovf1@htd0y*d0w6an=7n&2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*', ]
+ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
 
 # Sitemap
 SITE_ID = 1
@@ -50,6 +50,10 @@ INSTALLED_APPS = [
 
     # third-party
     'taggit',
+    'social_django',
+
+    # for development
+    'sslserver'
 ]
 
 MIDDLEWARE = [
@@ -116,6 +120,23 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+# Authentication
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+    'social_core.backends.facebook.FacebookOAuth2',
+]
+
+SOCIAL_AUTH_FACEBOOK_KEY = 'xxx'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'xxx'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+
+# Django Authentication
+LOGIN_REDIRECT_URL = 'dashboard'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
@@ -152,7 +173,4 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 
-# Authentication
-LOGIN_REDIRECT_URL = 'dashboard'
-LOGIN_URL = 'login'
-LOGOUT_URL = 'logout'
+
