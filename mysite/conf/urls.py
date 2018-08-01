@@ -31,7 +31,8 @@ urlpatterns = [
     path('social-auth/',
          include('social_django.urls', namespace='social')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
-         name='django.contrib.sitemaps.view.sitemap')
+         name='django.contrib.sitemaps.view.sitemap'),
+    path('images/', include('images.urls', namespace='images')),
 ]
 
 if settings.DEBUG:

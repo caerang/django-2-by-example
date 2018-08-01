@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
     # my app
     'blog.apps.BlogConfig',
+    'images.apps.ImagesConfig',
 
     # third-party
     'taggit',
