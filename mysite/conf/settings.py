@@ -25,7 +25,7 @@ SECRET_KEY = '16lj_5%#*1bjoacwu!v^(4t(m%esovf1@htd0y*d0w6an=7n&2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1', '27c753a6.ngrok.io']
+ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1', '1e5b719c.ngrok.io']
 
 # Sitemap
 SITE_ID = 1
