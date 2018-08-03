@@ -55,7 +55,7 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
 
     # for development
-    'sslserver'
+    'sslserver',
 ]
 
 MIDDLEWARE = [
