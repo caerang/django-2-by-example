@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     # third-party
     'taggit',
     'social_django',
+    'sorl.thumbnail',
 
     # for development
     'sslserver'
