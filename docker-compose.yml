@@ -17,15 +17,20 @@ services:
     # command: python3 manage.py runsslserver 0.0.0.0:8000
     restart: always
     volumes:
-      # - type: volume
-      #   source: ./mysite
-      #   target: /app
       - ./mysite:/app
     ports:
       - "25000:8000"
     depends_on:
       - db
 
+  redis:
+    container_name: 'redis'
+    image: 'redis:4.0.11-stretch'
+    ports:
+      - '127.0.0.1:6379:6379'
+    volumes:
+      - 'redisdata:/data'
+
 volumes:
   database:
-  # mysite:
+  redisdata:
