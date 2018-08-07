@@ -6,6 +6,7 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.http import require_POST
 
+from actions.models import Action
 from actions.utils import create_action
 from common.decorators import ajax_required
 from .forms import LoginForm, UserRegistrationForm,\
@@ -36,9 +37,17 @@ def user_login(request):
 
 @login_required
 def dashboard(request):
+    actions = Action.objects.exclude(user=request.user)
+    following_ids = request.user.following.values_list('id', flat=True)
+
+    if following_ids:
+        actions = actions.filter(user_id__in=following_ids)
+        actions = actions.selected_related('user', 'user_profile')\
+                         .prefetch_related('target')[:10]
     return render(request,
                   'account/dashboard.html',
-                  {'section': 'dashboard'})
+                  {'section': 'dashboard',
+                   'actions': actions})
 
 
 def register(request):
