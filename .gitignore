@@ -196,3 +196,6 @@ venv.bak/
 ### User Defined ###
 database
 mysite/media
+myshop/media
+redisdata
+
