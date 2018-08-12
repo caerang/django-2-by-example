@@ -45,6 +45,19 @@ services:
     depends_on:
       - rabbitmq
       - redis
+  
+  flower:
+    container_name: 'django2-flower'
+    image: *app
+    command: celery flower -A conf --address=127.0.0.1 --port=5555
+    volumes:
+      - ./myshop:/app
+    ports:
+      - "5555:5555"
+    depends_on:
+      - rabbitmq
+      - redis
+      - celery
 
   rabbitmq:
     container_name: 'django2-rabbitmq'
