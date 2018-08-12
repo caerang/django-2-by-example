@@ -7,3 +7,4 @@ social-auth-app-django
 django-sslserver
 sorl-thumbnail
 redis
+celery
