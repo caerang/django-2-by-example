@@ -24,6 +24,7 @@ services:
       - "25000:8000"
     depends_on:
       - db
+      - rabbitmq
 
   redis:
     container_name: 'django2-redis'
@@ -32,6 +33,18 @@ services:
       - '127.0.0.1:6379:6379'
     volumes:
       - 'redisdata:/data'
+
+  celery:
+    container_name: 'django2-celery'
+    image: *app
+    command: celery -A conf worker --concurrency=1 --hostname=celery@%h --loglevel=INFO
+    environment:
+      - CELERY_BROKER=ampq://admin:mypass@rabbitmq:5672
+    volumes:
+      - ./myshop:/app
+    depends_on:
+      - rabbitmq
+      - redis
 
   rabbitmq:
     container_name: 'django2-rabbitmq'
@@ -42,12 +55,6 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
-
-  celery:
-    container_name: 'django2-celery'
-    image: *app
-    environment:
-      - BROKER_URL: 'ampq://admin:mypass@rabbitmq:5672'
 
 volumes:
   database:
