@@ -9,3 +9,4 @@ sorl-thumbnail
 redis
 celery
 flower
+braintree
