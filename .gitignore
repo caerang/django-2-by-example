@@ -198,4 +198,4 @@ database
 mysite/media
 myshop/media
 redisdata
-
+myshop/static/
