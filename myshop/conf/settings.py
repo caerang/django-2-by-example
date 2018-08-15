@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
     'payment.apps.PaymentConfig',
+    'coupons.apps.CouponsConfig',
 ]
 
 MIDDLEWARE = [
@@ -157,8 +158,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 BRAINTREE_MERCHANT_ID = 'pc8p9cc8rzycm543'  # Merchant ID
 BRAINTREE_PUBLIC_KEY = 'r8tsf24x2gmqryyv'   # Public Key
 BRAINTREE_PRIVATE_KEY = '3136b9dab863210e9131862e988c2957'  # Private key
-
-
 Configuration.configure(
     Environment.Sandbox,
     BRAINTREE_MERCHANT_ID,
