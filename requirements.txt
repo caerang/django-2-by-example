@@ -11,3 +11,4 @@ celery
 flower
 braintree
 WeasyPrint
+django-rosetta
