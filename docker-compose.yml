@@ -15,7 +15,7 @@ services:
   web:
     container_name: 'django2-web'
     build: .
-    image: &app django2
+    # image: &app django2
     command: python3 manage.py runserver 0.0.0.0:8000
     restart: always
     volumes:
@@ -36,7 +36,8 @@ services:
 
   celery:
     container_name: 'django2-celery'
-    image: *app
+    build: .
+    # image: *app
     command: celery -A conf worker --concurrency=1 --hostname=celery@%h --loglevel=INFO
     environment:
       - CELERY_BROKER=ampq://admin:mypass@rabbitmq:5672
@@ -48,7 +49,8 @@ services:
   
   flower:
     container_name: 'django2-flower'
-    image: *app
+    build: .
+    # image: *app
     command: celery flower -A conf --address=127.0.0.1 --port=5555
     volumes:
       - ./myshop:/app
