@@ -12,3 +12,4 @@ flower
 braintree
 WeasyPrint
 django-rosetta
+pep8
